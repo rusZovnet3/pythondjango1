@@ -49,12 +49,74 @@ print("\t\t#############  Método ljust()  #############\n")
 cadena4 = "PHP"
 print(str(cadena4) + "   tiene " + str(len(cadena4)) + " elementos  <------> " + str(cadena4.ljust(10,"e")) + " contiene " + str(len(cadena4.ljust(10,"e"))) + " elementos\n")
 
+print("\t\t#############  Método lstrip()  #############\n")
+# elimina caracteres de izquierda a derecha
+cadena5 = cadena3 + " Con Django y Flask desde cero"
+
+print(str(cadena5) + " <-------> " + str(cadena5.lstrip("Cur")) + "\n")
+
+print("\t\t#############  Método maketrans()  #############\n")
+
+''' maketrans, ubica el caracter y reemplaza con el nuevo caracter, nos devuelve mapeado
+translate, se usa para traducir el mapeo, que nos devuelve lo reemplazado con 
+el metodo maketrans '''
+
+print(str(cadena5) + " =====> " + str(cadena5.translate(cadena5.maketrans("s", "S"))) + "\n")
+
+print("\t\t#############  Método partition()  #############\n")
+
+# particiona o divide la cadena de texto, nos devuelve una tupla
+print(str(cadena5) + " <------> " + str(cadena5.partition("jan")) + "\n")
+
+print("\t\t#############  Método removeprefix()  #############\n")
+
+# solo elimina del elemento que inicia la cadena, un caracter ó palabra
+print(str(cadena5) + " <------> " + str(cadena5.removeprefix("Curso ")) + "\n")
+
+print("\t\t#############  Método removesuffix()  #############\n")
+
+# solo elimina del elemento que esten al final de la cadena, un caracter ó palabra
+print(str(cadena5) + " <------> " + str(cadena5.removesuffix("ero")) + "\n")
 
 
+print("\t\t#############  Método replace()  #############\n")
+print(str(cadena5) + " <------> " + str(cadena5.replace("ó", "o")) + "\n")
+
+print("\t\t#############  Método split()  #############\n")
+# elimina el caracter o palabra de la cadena, nos devuelve en una lista
+print(str(cadena5) + " ------ Original\n" + str(cadena5.split("de")) + "\n")
+
+print("\t\t#############  Método splitlines()  #############\n")
+
+cadena6 = cadena5 + "\nempezando con full@stack y\n back\nend"
+# elimina los caracter especiales, nos devuelve en una lista
 
 
+print(str(cadena6) + " ------ Original\n\n" + str(cadena6.splitlines()) + "\n")
 
 
+print("\t\t#############  Método startswith()  #############\n")
+cadena7 = "Curso de Html5\ny Css3 estaphp\r desde cero"
+
+# Filtra el primer caracter inicial, nos devuelve booleano
+# \r  ===>  remueve, y aumenta mas caracteres, sí es menor de caracter final
+
+print(str(cadena7) + "\n")
+print(cadena7.startswith("de"))
+print(cadena7.startswith("Cu"))
 
 
+print("\t\t#############  Método endswith()  #############\n")
+# Filtra el final caracter inicial, nos devuelve booleano
+print(str(cadena7) + "\n")
+print(cadena7.endswith("ro"))
 
+print("\t\t#############  Método strip()  #############\n")
+
+# elimina los caracteres de la cadena, realizada por caracteres, de inicio
+# y final
+
+print(str(cadena5) + "  ----- Original\n" + str(cadena5.strip("Co")) + "\n")
+
+print("\t\t#############  Método title()  #############\n")
+print(str(cadena5) + "  ----- Original\n" + str(cadena5.title()) + "\n")
