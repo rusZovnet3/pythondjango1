@@ -108,4 +108,83 @@ for iitem in listsi:
         print(ival)
 
 
-# Carpeta 7, video 4
+print("\n\t\t#############  vaciar datos de un array   #############\n")
+
+# eliminar todos los elementos del array
+datos1 = [154,2,0,54,78,36]
+datos3 = [15,4,12.44,10,56,74,6,51,"Hola",45]
+
+print(str(datos1) + " ==> " + str(datos1.clear()))
+
+print("\n\t\t#############  copiar datos de un array a otro nuevo   #############\n")
+
+datos2 = datos3.copy()
+
+print(f"datos3 = " + str(datos3) + " <====> datos2 = " + str(datos2))
+
+print("\n\t\t#############  mostrar desde la posicion especifica hasta otra posicion   #############\n")
+
+# mostrar la posicion especifica hasta la posicion final
+#print(datos2[3:])
+
+# mostrar la posicion inicial hasta la posicion final
+#print(datos2[3:8])
+
+print(datos2[:5])
+
+print("\n\t\t#############  eliminar elementos, por posiciones ini y fin   #############\n")
+
+# eliminar un elemento del array, por posicion
+print(str(datos2) + " verificar con el de abajo\n")
+
+del datos2[3]
+print(datos2)
+
+# eliminar elementos por posicion ini y fin
+print("\n" + str(datos2) + " verificar con el de abajo, elimine la posicion 3 y 5\n")
+
+del datos2[0:3]
+print(datos2)
+
+print("\n\t\t#############  eliminar todos los elementos   #############\n")
+
+del datos2[:]
+print(datos2)
+
+print("\n\t\t#############  mostrar en posicion ini y fin, en n saltos de elementos   #############\n")
+
+print(str(datos3) + " Verificar ")
+print(datos3[0:6:2])
+
+print("\n ----------------- \n")
+
+
+
+datos4 = ["World","Mundo", "menor",-14,10.1,-3.05,124,"python"]
+datos5 = [23,"css",-45.4,"html","c#"]
+datos6 = [15,36.1,-3.45]
+datos7 = ["javascript", "angular", "vue", "react", "ionic", 45]
+datos8 = ["php", "mysql", "mongoDB", "oracle", "sqlite"]
+num11 = 45
+num12 = 65
+num13 = "C++"
+num14 = -1
+datos9 = ["kubernetes", "docker",[154, [25, "appserv"], "25"] , "xampp", 2002, ["github"], "git"]
+
+datos3.append(datos8)
+datos6.append(num11)
+datos6.append(datos5)
+datos6.append(num13)
+datos3.append(num13)
+datos3.append(datos7)
+datos3.append(datos6)
+datos3.append(num13)
+datos3.append(num14)
+
+print(str(datos3)+ "  \n\nverificar \n\n")
+print("El mejor lenguaje de programación es : " + str(datos3[12][0]) + "\n")
+print("El lenguaje de programación el que uso es : " + str(datos3[13][4][4]) + "\n")
+print("No me gusta usar las sintaxis de : " + str(datos3[13][5]) + "\n")
+
+
+
