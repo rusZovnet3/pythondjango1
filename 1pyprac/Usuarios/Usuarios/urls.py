@@ -20,7 +20,7 @@ from Usuarios.Controllers.IndexController import IndexController
 
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
-    path('Llanque/<int:year>', IndexController.index, name='index'),
-    
+    #path('Llanque/<int:year>', IndexController.index, name='index'),
+    path('', IndexController.index, name='index'),
     #path('admin/', admin.site.urls),
 ]
