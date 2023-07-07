@@ -2,5 +2,6 @@
 from django.shortcuts import render, HttpResponse
 
 
-def index(request):
-    return HttpResponse('<h1>Carlos Fernando</h1>')
+class IndexController():
+    def index(request, year):
+        return HttpResponse('<h1>Carlos Fernando</h1>%s' % year)  #%s  formatea el dato int a str

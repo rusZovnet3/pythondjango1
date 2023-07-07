@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # invocando a la ruta del archivo, importando la funcion index
-from Usuarios.Controllers.IndexController import index
+from Usuarios.Controllers.IndexController import IndexController
 
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
-    path('Llanque', index, name='index'),
+    path('Llanque/<int:year>', IndexController.index, name='index'),
     
     #path('admin/', admin.site.urls),
 ]
