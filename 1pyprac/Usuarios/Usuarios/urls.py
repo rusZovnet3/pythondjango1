@@ -23,5 +23,5 @@ urlpatterns = [
     #path('Llanque/<int:year>', IndexController.index, name='index'),
     path('', IndexController.index, name='index'),
     path('/about', IndexController.about, name='about'),
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='login'),
 ]
