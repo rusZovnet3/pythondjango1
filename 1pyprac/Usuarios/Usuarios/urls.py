@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # invocando a la ruta del archivo, importando la funcion index
-from Usuarios.Controllers.IndexController import IndexController
+from App.Controllers.IndexController import IndexController
 
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
