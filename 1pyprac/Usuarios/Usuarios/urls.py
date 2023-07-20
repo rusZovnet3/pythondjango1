@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 # invocando a la ruta del archivo, importando la funcion index
 from App.Controllers.IndexController import IndexController
 
@@ -24,4 +27,4 @@ urlpatterns = [
     path('', IndexController.index, name='index'),
     path('about', IndexController.about, name='about'),
     path('admin/', admin.site.urls, name='login'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

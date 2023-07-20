@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import Cursos,Categorias
 
 # Register your models here.
@@ -11,6 +12,10 @@ admin.site.register(Categorias,CategoriasAdmin)
 
 # 
 class CursosAdmin(admin.ModelAdmin):
+    #añadir imagen html a la página de editar
+    def image_tag(self, obj):
+        return format_html('<img width="85" height="45" src="/media/{}" />'.format(obj.Imagen))
+    readonly_fields = ['image_tag']
     pass
 
 admin.site.register(Cursos,CursosAdmin)
