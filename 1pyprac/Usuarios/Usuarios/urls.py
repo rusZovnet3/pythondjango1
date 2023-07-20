@@ -22,6 +22,6 @@ urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
     #path('Llanque/<int:year>', IndexController.index, name='index'),
     path('', IndexController.index, name='index'),
-    path('/about', IndexController.about, name='about'),
+    path('about', IndexController.about, name='about'),
     path('admin/', admin.site.urls, name='login'),
 ]
