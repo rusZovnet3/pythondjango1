@@ -21,10 +21,13 @@ from django.conf.urls.static import static
 # invocando a la ruta del archivo, importando la funcion index
 from App.Controllers.IndexController import IndexController
 
+from App.Controllers.CursosController import CursosController
+
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
     #path('Llanque/<int:year>', IndexController.index, name='index'),
     path('', IndexController.index, name='index'),
     path('about', IndexController.about, name='about'),
     path('admin/', admin.site.urls, name='login'),
+    path('cursos', CursosController.index, name='cursos'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
