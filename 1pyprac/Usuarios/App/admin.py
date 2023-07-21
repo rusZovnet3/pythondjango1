@@ -14,7 +14,11 @@ admin.site.register(Categorias,CategoriasAdmin)
 class CursosAdmin(admin.ModelAdmin):
     #añadir imagen html a la página de editar
     def image_tag(self, obj):
-        return format_html('<img width="85" height="45" src="/media/{}" />'.format(obj.Imagen))
+        if obj.Imagen != None:   # verifica si la imagen de cursos está cargada en formulario
+            return format_html('<img width="85" height="45" src="/media/{}" />'.format(obj.Imagen))
+        else:
+            return format_html('<img width="85" height="85" src="/static/images/default.png" />')
+    
     image_tag.short_description = 'Imagen'
     readonly_fields = ['image_tag']
     raw_id_fields = ('CategoriaID',)
