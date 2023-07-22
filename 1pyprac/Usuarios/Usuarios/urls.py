@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 
 # invocando a la ruta del archivo, importando la funcion index
 from App.Controllers.IndexController import IndexController
-
 from App.Controllers.CursosController import CursosController
 
 urlpatterns = [

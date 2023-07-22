@@ -1,5 +1,42 @@
 {% include "views/default/header.html" %}
 
-<h1>Cursos esperando</h1>
+<div class="container">
+
+    <div class="row">
+
+        {% if cursos_list %}
+
+        {% for curso in cursos_list %}
+
+        <div class="col-xs-6 col-md-2">
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <a href="details/{{ curso.CursoId }}">
+
+                        <img src="/media/{{ curso.Imagen }}" width="85" height="85" class="thumbnail" />
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+        {% else %}
+
+        <p>No hay Cursos Disponible.</p>
+
+        {% endif %}
+
+    </div>
+    
+</div>
 
 {% include "views/default/footer.html" %}
