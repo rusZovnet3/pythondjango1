@@ -1,5 +1,5 @@
 from django.db import models
-from ..models import Cursos
+from ..models import Cursos,Categorias
 
 
 class Cursos_models():
@@ -9,5 +9,8 @@ class Cursos_models():
         return cursos
     
     def getcurso(idcurso):
-        curso = Cursos.objects.get(CursoId=idcurso)
-        return curso
+        # coleccion de objetos
+        curso = Cursos.objects.filter(CursoId=idcurso)
+        for item in curso:
+            categoria = Categorias.objects.get(CategoriaID=item.CategoriaID.CategoriaID)
+        return [item,categoria]
