@@ -1,0 +1,35 @@
+{% include "views/default/header.html" %}
+
+{% load i18n static %}
+
+<div class="login">
+
+    <div id="container">
+
+        <div class="bg-info" id="header">
+            
+            <h1>Registro de Usuarios</h1>
+
+        </div>
+
+        <div id="content-main">
+
+            <form action="{{ app_path }}" method="post" id="login-form">
+
+                {% csrf_token %}
+
+                <table>
+
+                    <tbody></tbody>
+                    
+                </table>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "views/default/footer.html" %}

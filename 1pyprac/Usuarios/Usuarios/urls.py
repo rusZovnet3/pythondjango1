@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 # invocando a la ruta del archivo, importando la funcion index
 from App.Controllers.IndexController import IndexController
 from App.Controllers.CursosController import CursosController
+from App.Controllers.UserController import UserController
 
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
@@ -31,4 +32,5 @@ urlpatterns = [
     path('cursos', CursosController.index, name='cursos'),
     path('details/<int:cursoid>/', CursosController.details, name='details'),  #dato GET
     path('obtener', CursosController.obtener_curso, name="obtener"),
+    path('register', UserController.register, name="register"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
