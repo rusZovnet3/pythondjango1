@@ -10,5 +10,9 @@ class CursosController():
     
     def details(request,cursoid):
         objects = Cursos_models.getcurso(cursoid)
-        context = {'curso': objects[0], 'categoria': objects[1]}
+        #context = {'curso': objects[0], 'categoria': objects[1]}
+        context = {'curso': objects}
         return render(request, 'views/cursos/details.html',context)
+    
+    def obtener_curso(request):
+        pass

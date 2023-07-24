@@ -10,7 +10,9 @@ class Cursos_models():
     
     def getcurso(idcurso):
         # coleccion de objetos
-        curso = Cursos.objects.filter(CursoId=idcurso)
+        '''curso = Cursos.objects.filter(CursoId=idcurso)
         for item in curso:
-            categoria = Categorias.objects.get(CategoriaID=item.CategoriaID.CategoriaID)
-        return [item,categoria]
+           categoria = Categorias.objects.get(CategoriaID=item.CategoriaID.CategoriaID)
+        return [item,categoria]'''
+        curso = Cursos.objects.get(CursoId=idcurso)
+        return curso

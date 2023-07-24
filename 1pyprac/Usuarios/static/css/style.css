@@ -1,5 +1,5 @@
 .imglogo {
-    max-width: 30%;
+    max-width: 70%;
 }
 
 .navbar-brand {
@@ -31,4 +31,15 @@
 
 .card-body p {
     font-size: 12px;
+}
+
+input,
+table {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .imglogo {
+        max-width: 30%;
+    }
 }
