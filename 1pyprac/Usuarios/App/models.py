@@ -18,3 +18,7 @@ class Cursos(models.Model):
     Estado      = models.BooleanField()
     CategoriaID = models.ForeignKey(Categorias, blank=True, null=True, on_delete=models.CASCADE)
     
+class Inscripcion(models.Model):
+    CursoId         = models.IntegerField(default=0)
+    EstudianteID    = models.IntegerField(default=0)
+    Fecha           = models.CharField(max_length=20)
