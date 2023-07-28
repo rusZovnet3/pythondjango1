@@ -24,9 +24,9 @@ class CursosController():
                 cursoid = request.POST['cursoid']
                 user    = request.user.id
                 model   = Inscripcion(
-                    CursoId=cursoid,
-                    EstudianteID=user,
-                    Fecha=date.today()
+                    CursoId         = cursoid,
+                    EstudianteID    = user,
+                    Fecha           = date.today()
                 )
                 model.save()
                 return HttpResponse('<h1>Rosmery Condori Toledo</h1>%s' % cursoid)
