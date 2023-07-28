@@ -33,4 +33,5 @@ urlpatterns = [
     path('details/<int:cursoid>/', CursosController.details, name='details'),  #dato GET
     path('obtener', CursosController.obtener_curso, name="obtener"),
     path('register', UserController.register, name="register"),
+    path('mis_cursos', CursosController.mis_cursos, name='mis_cursos'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

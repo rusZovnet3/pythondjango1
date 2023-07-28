@@ -1,5 +1,5 @@
 from django.db import models
-from ..models import Cursos,Categorias
+from ..models import Cursos,Categorias,Inscripcion
 
 
 class Cursos_models():
@@ -15,4 +15,11 @@ class Cursos_models():
            categoria = Categorias.objects.get(CategoriaID=item.CategoriaID.CategoriaID)
         return [item,categoria]'''
         curso = Cursos.objects.get(CursoId=idcurso)
+        return curso
+    
+    def mis_cursos_list(request):
+        curso       = None
+        inscripcion = Inscripcion.objects.filter(EstudianteID=request.user.id)
+        for item in inscripcion:
+            curso   = Cursos.objects.filter(CursoId=item.CursoId)
         return curso
