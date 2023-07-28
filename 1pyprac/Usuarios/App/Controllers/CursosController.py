@@ -7,8 +7,23 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class CursosController():
     def index(request):
-        cursos_list =  Cursos_models.cursos_list()
-        context = {'cursos_list': cursos_list}
+        filtrar = None
+        if request.method == "POST":   # POST de la busqueda de cursos
+            filtrar = request.POST.get('filtrar')  # name='filtrar'  de busqueda
+            
+        cursos_list =  Cursos_models.cursos_list(filtrar)
+        
+        paginator   = Paginator(cursos_list, 6)  # Paginador
+        page = request.GET.get('page')     # variable GET del paginador url
+        
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            items = paginator.page(1)
+        except EmptyPage:
+            items= paginator.page(paginator.num_pages)
+        
+        context = {'cursos_list': items}
         return render(request, 'views/cursos/cursos.html',context)
     
     def details(request,cursoid):

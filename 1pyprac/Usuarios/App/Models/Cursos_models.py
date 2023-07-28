@@ -3,9 +3,12 @@ from ..models import Cursos,Categorias,Inscripcion
 
 
 class Cursos_models():
-    def cursos_list():
-        # Ordenar por nombres
-        cursos = Cursos.objects.order_by('Nombre')
+    def cursos_list(filtrar):
+        if filtrar == None:
+            cursos = Cursos.objects.order_by('Nombre')  # Ordenar por nombres
+        else:
+            '''Hay dos guiones bajos (_) entre Nombre y contains. El ORM de Django utiliza esta sintaxis para separar los nombres de los campos ("Nombre") de las operaciones ó filtros ("contains"). Sí solo utilizas un guion bajo, obtendra un error como "FieldError: Cannot resolved keyword title_contains"'''
+            cursos = Cursos.objects.filter(Nombre__contains=filtrar)
         return cursos
     
     def getcurso(idcurso):

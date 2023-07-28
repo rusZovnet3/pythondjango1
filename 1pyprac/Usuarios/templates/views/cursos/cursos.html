@@ -130,6 +130,52 @@
         {% endif %}
 
     </div>
+
+    <!--- Begin - Paginador  -->
+
+    {% if cursos_list.has_next or cursos_list.has_previous %}
+
+    <ul class="pagination">
+
+        {% if cursos_list.has_previous %}
+
+        <li>
+
+            <a href="?page={{ cursos_list.previous_page_number }}" class="btn btnpages">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </a>
+
+        </li>
+
+        {% endif %}
+
+        {% for page in cursos_list.paginator.page_range %}
+
+        <li class="{% if cursos_list.number == page %}active{% endif %}">
+
+            <a class="btn btnpages" href="?page={{ page }}">{{ page }}</a>
+
+        </li>
+
+        {% endfor %}
+
+        {% if cursos_list.has_next %}
+
+        <li>
+
+            <a href="?page={{ cursos_list.next_page_number }}" class="btn btnpages">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+
+        </li>
+
+        {% endif %}
+
+    </ul>
+
+    {% endif %}
+
+    <!-- end - Paginador  -->
     
 </div>
 
