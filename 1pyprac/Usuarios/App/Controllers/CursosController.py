@@ -37,7 +37,7 @@ class CursosController():
 
     def mis_cursos(request):
         cursos_list = Cursos_models.mis_cursos_list(request)
-        paginator   = Paginator(cursos_list, 1)  # Paginador
+        paginator   = Paginator(cursos_list, 5)  # Paginador
         page = request.GET.get('page')
         
         try:
@@ -48,8 +48,6 @@ class CursosController():
             items= paginator.page(paginator.num_pages)
             
         context = {
-            'meta_description': '',
-             'meta_keywords': '',
             'items':items,
         }
             

@@ -1,0 +1,86 @@
+{% include "views/default/header.html" %}
+
+<div class="container">
+
+    <div class="row">
+
+        {% if items %}
+
+            {% for curso in items %}
+
+            <div class="col-xs-6 col-md-2">
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <a href="details/{{ curso.CursoId }}">
+
+                            <img src="/media/{{ curso.Imagen }}" class="thumbnail" />
+
+                        </a>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <table class="tableCursos">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <h5>{{ curso.Nombre }}</h5>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+
+                                        {% if curso.Estado %}
+
+                                        <p class="text-success">Disponible</p>
+
+                                        {% else %}
+
+                                        <p class="text-danger">No Disponible</p>
+
+                                        {% endif %}
+                                    </td>
+                                    
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <h5>Bs. {{ curso.Costo }}</h5>
+                                    </td>
+                                    
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <p>No hay Cursos Agregados</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% include "views/default/footer.html" %}

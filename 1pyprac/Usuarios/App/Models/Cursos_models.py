@@ -18,8 +18,10 @@ class Cursos_models():
         return curso
     
     def mis_cursos_list(request):
-        curso       = None
+        i           = 0
         inscripcion = Inscripcion.objects.filter(EstudianteID=request.user.id)
+        curso       = [[]] * len(inscripcion)
         for item in inscripcion:
-            curso   = Cursos.objects.filter(CursoId=item.CursoId)
+            curso[i]   = Cursos.objects.get(CursoId=item.CursoId)
+            i += 1
         return curso
