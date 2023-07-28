@@ -2,6 +2,36 @@
 
 <div class="container">
 
+    <div class="form-group">
+
+        <form action="{{ app_path }}" method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <input type="text" id="filtrar" name="filtrar" placeholder="Buscar" class="form-control" />
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <div class="row">
+
+                        <input type="submit" value="Buscar" class="btn btn-success buscar" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
     <div class="row">
 
         {% if cursos_list %}

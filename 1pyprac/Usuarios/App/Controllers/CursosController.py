@@ -37,8 +37,8 @@ class CursosController():
 
     def mis_cursos(request):
         cursos_list = Cursos_models.mis_cursos_list(request)
-        paginator   = Paginator(cursos_list, 5)  # Paginador
-        page = request.GET.get('page')
+        paginator   = Paginator(cursos_list, 2)  # Paginador
+        page = request.GET.get('page')     # variable GET del paginador url
         
         try:
             items = paginator.page(page)

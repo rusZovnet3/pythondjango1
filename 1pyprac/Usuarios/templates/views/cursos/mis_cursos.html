@@ -81,6 +81,48 @@
 
     </div>
 
+    {% if items.has_next or items.has_previous %}
+
+    <ul class="pagination">
+
+        {% if items.has_previous %}
+
+        <li>
+
+            <a href="?page={{ items.previous_page_number }}" class="btn btnpages">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </a>
+
+        </li>
+
+        {% endif %}
+
+        {% for page in items.paginator.page_range %}
+
+        <li class="{% if items.number == page %}active{% endif %}">
+
+            <a class="btn btnpages" href="?page={{ page }}">{{ page }}</a>
+
+        </li>
+
+        {% endfor %}
+
+        {% if items.has_next %}
+
+        <li>
+
+            <a href="?page={{ items.next_page_number }}" class="btn btnpages">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+
+        </li>
+
+        {% endif %}
+
+    </ul>
+
+    {% endif %}
+
 </div>
 
 {% include "views/default/footer.html" %}
