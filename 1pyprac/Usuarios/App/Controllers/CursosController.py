@@ -51,8 +51,12 @@ class CursosController():
                 return HttpResponseRedirect('admin')
 
     def mis_cursos(request):
-        cursos_list = Cursos_models.mis_cursos_list(request)
-        paginator   = Paginator(cursos_list, 2)  # Paginador
+        filtrar = None
+        if request.method == "POST":
+            filtrar = request.POST.get('filtrar')  # name="filtrar" de la vista mis_cursos
+        
+        cursos_list = Cursos_models.mis_cursos_list(request, filtrar)
+        paginator   = Paginator(cursos_list, 6)  # Paginador
         page = request.GET.get('page')     # variable GET del paginador url
         
         try:

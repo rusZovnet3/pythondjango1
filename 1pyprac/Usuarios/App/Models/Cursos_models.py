@@ -20,11 +20,17 @@ class Cursos_models():
         curso = Cursos.objects.get(CursoId=idcurso)
         return curso
     
-    def mis_cursos_list(request):
+    def mis_cursos_list(request, filtrar):
         i           = 0
         inscripcion = Inscripcion.objects.filter(EstudianteID=request.user.id)
         curso       = [[]] * len(inscripcion)
         for item in inscripcion:
             curso[i]   = Cursos.objects.get(CursoId=item.CursoId)
             i += 1
-        return curso
+            
+        if not filtrar:  # sí el filtro esta vacio
+            return curso
+        else:
+            # busca con el parametro que coincida al inicio del nombre
+            # lstrip  elimina los espacios en blanco de la izquierda
+            return list(filter(lambda x: x.Nombre.startswith(filtrar.lstrip()), curso))
