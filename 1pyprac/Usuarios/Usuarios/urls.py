@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from App.Controllers.IndexController import IndexController
 from App.Controllers.CursosController import CursosController
 from App.Controllers.UserController import UserController
+from App.Controllers.ProfileController import ProfileController
 
 urlpatterns = [
     # Obtenemos los parametros que se ingresan a travez de la url para ejecutar las vistas segun el parametro
@@ -34,4 +35,5 @@ urlpatterns = [
     path('obtener', CursosController.obtener_curso, name="obtener"),
     path('register', UserController.register, name="register"),
     path('mis_cursos', CursosController.mis_cursos, name='mis_cursos'),
+    path('profile', ProfileController.profile, name='profile'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
