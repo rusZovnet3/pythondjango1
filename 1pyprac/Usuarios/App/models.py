@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -22,3 +23,11 @@ class Inscripcion(models.Model):
     CursoId         = models.IntegerField(default=0)
     EstudianteID    = models.IntegerField(default=0)
     Fecha           = models.CharField(max_length=20)
+    
+class Profile(models.Model):
+    profileId       = models.AutoField(primary_key=True)
+    user            = models.OneToOneField(User, on_delete=models.CASCADE)
+    number_phone    = models.CharField(max_length=20)
+    location        = models.CharField(max_length=50)
+    birth_date      = models.DateField(null=True, blank=True)
+    image           = models.ImageField(null=True,upload_to='images/profile')

@@ -22,8 +22,9 @@
 
                             {% csrf_token %}
 
+                            <!-- begin input file  -->
                             {{ imageForm.as_p }}
-
+                            <!-- end input file  -->
                             <p class="errornote text-danger">
                                 {{ errorImage }}
                             </p>
