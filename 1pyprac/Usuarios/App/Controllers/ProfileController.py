@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm,DateForm
+from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm,DateForm,PasswordForm
 from App.Models.Profile_models import Profile_models
 from django.contrib.auth.models import User
 
@@ -18,6 +18,7 @@ class ProfileController():
             'form2': ProfileForm(),  #  form de perfil con atributo especifico
             'dateForm': DateForm(),   # form campo fecha de la tabla profile
             'profile': profile,
+            'password': PasswordForm(),  # form campo password de la tabla User
         }
         return render(request, 'views/profile/profile.html', context)
     
@@ -39,6 +40,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'password': PasswordForm(),  # form campo password de la tabla User
                }
             else:
                 context = {
@@ -47,6 +49,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'password': PasswordForm(),  # form campo password de la tabla User
                }
         return render(request, 'views/profile/profile.html',context)
     
@@ -65,10 +68,12 @@ class ProfileController():
             # extraer todo las POST, resultado de busqueda desde la DB del usuario logueado
             form1   = UserForm(request.POST, instance=user)
             form2   = ProfileForm(request.POST, instance=profile)
+            form3   = DateForm(request.POST, instance=profile)   # form , metodo campo fecha
             
-            if form1.is_valid() and form2.is_valid():
+            if form1.is_valid() and form2.is_valid() and form3.is_valid():
                 form1.save()
                 form2.save()
+                form3.save()
                 profile = Profile_models.getProfile(userid)
                 context = {
                    'imageForm':ImageForm(),
@@ -76,6 +81,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'password': PasswordForm(),  # form campo password de la tabla User
                }
                 
         return render(request, 'views/profile/profile.html',context)

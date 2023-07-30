@@ -58,3 +58,15 @@ class DateForm(forms.ModelForm):
     class Meta:
         model   = Profile   #  la tabla profile
         fields  = ['birth_date']
+        
+
+class PasswordForm(forms.ModelForm):
+    password = forms.CharField(label='', widget=forms.TextInput(attrs = {
+        'type': 'password',
+        'class': 'form-control',
+        'placeholder': 'Password'
+    }))
+    
+    class Meta:
+        model   = User   #  la tabla User
+        fields  = ['password']

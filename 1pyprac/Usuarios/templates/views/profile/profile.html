@@ -106,6 +106,7 @@
                                             </div>
 
                                         </div>
+                                        <br>
 
                                         <div class="submit-row">
 
@@ -117,6 +118,49 @@
 
                                 </div>
                             
+                            </div>
+
+                            <div class="card-header" id="headingOne">
+
+                                <div class="bg-info" id="header">
+
+                                    <h2 class="mb-0 t">
+
+                                        <button class="btn btn-link text-light" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                            Cambiar Contraseña
+                                        </button>
+
+                                    </h2>
+
+                                </div>
+
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                            
+                                    <div class="card-body">
+
+                                        <form action="{{ app_path }}/updatePassword" method="POST" id="login-form">
+
+                                            {% csrf_token %}
+
+                                            <!-- begin - formulario de password -->
+                                            {{ password }}
+                                            <!-- end - formulario de password -->
+
+                                            </br>
+
+                                            <div class="submit-row">
+
+                                                <input type="submit" value="Actualizar" class="btn btn-success">
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                
+                                </div>
+
                             </div>
 
                         </div>
@@ -136,6 +180,13 @@
 <script>
 
     $(function (){
+
+        // formato de la fecha del calendario
+        $('#datetimepicker1').datetimepicker({
+
+            format: 'DD/MM/YYYY',
+
+        });
 
         var imagePerfil = (evt) => {
 
