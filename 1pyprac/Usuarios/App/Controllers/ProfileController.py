@@ -3,6 +3,7 @@ from django.shortcuts import render
 from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm,DateForm,PasswordForm
 from App.Models.Profile_models import Profile_models
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 
 class ProfileController():
     
@@ -85,4 +86,16 @@ class ProfileController():
                }
                 
         return render(request, 'views/profile/profile.html',context)
+    
+    
+    @login_required
+    def updatePassword(request):
+        userid      = request.user.id
+        user        = User.objects.get(id=userid)  # mostrar por id en la DB del id logueado
+        form1       = PasswordForm(request.POST, instance=user)
+        
+        if request.method == "POST" and form1.is_valid():
+            user.set_password(form1.cleaned_data['password'])  # la fila buscada, se carga el password en el campo de password
+            form1.save()
+        return HttpResponseRedirect("admin/")
     
