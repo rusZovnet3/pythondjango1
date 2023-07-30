@@ -37,4 +37,5 @@ urlpatterns = [
     path('mis_cursos', CursosController.mis_cursos, name='mis_cursos'),
     path('profile', ProfileController.profile, name='profile'),
     path('updateImage', ProfileController.updateImage, name='updateImage'),
+    path('updateUser', ProfileController.updateUser, name='updateUser'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

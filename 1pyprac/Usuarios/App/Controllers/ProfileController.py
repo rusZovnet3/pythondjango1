@@ -1,26 +1,25 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from App.Models.Profile_forms import ImageForm
+from App.Models.Profile_forms import ImageForm,UserForm
 from App.Models.Profile_models import Profile_models
 from django.contrib.auth.models import User
 
 class ProfileController():
     
     @login_required   # metodo en la que esta iniciado sesion el usuario a los procedimientos
-    
     def profile(request):
         userid  = request.user.id   # id del login sesionado
         user    = User.objects.get(id=userid)  # compara la id con la DB de la tabla User
         profile = Profile_models.getProfile(userid)
         
         context = {
-            'imageForm': ImageForm(),
+            'imageForm': ImageForm(),  # atributos de form y datos de la tabla profile
+            'form1': UserForm(),    # el formulario de usuario
             'profile': profile,
         }
         return render(request, 'views/profile/profile.html', context)
     
     @login_required
-    
     def updateImage(request):
         if request.method == "POST":  # Sí los datos estan cargado
             userid  = request.user.id  # la id del usuario logueado
@@ -32,12 +31,38 @@ class ProfileController():
                 form.save()
                 profile   =  Profile_models.getProfile(userid)
                 context = {
-                   'imageForm':ImageForm() ,
+                   'imageForm':ImageForm(),
+                   'form1': UserForm(),  # el formulario de usuario
                    'profile': profile,
                }
             else:
                 context = {
-                   'imageForm':ImageForm() ,
+                   'imageForm':ImageForm(),
+                   'form1': UserForm(),   # el formulario de usuario
                    'profile': profile,
                }
         return render(request, 'views/profile/profile.html',context)
+    
+    
+    @login_required
+    def updateUser(request):
+        # verificar sí estan cargado los datos del form usuario
+        if request.method == "POST":
+            # id del usuario logueado
+            userid  = request.user.id
+            # buscar la id logueado a la DB de usuario
+            user    = User.objects.get(id=userid)
+            # extraer todo las POST, resultado de busqueda desde la DB del usuario logueado
+            form1   = UserForm(request.POST, instance=user)
+            
+            if form1.is_valid():
+                form1.save()
+                profile = Profile_models.getProfile(userid)
+                context = {
+                   'imageForm':ImageForm(),
+                   'form1': UserForm(),  # el formulario de usuario
+                   'profile': profile,
+               }
+                
+        return render(request, 'views/profile/profile.html',context)
+    
