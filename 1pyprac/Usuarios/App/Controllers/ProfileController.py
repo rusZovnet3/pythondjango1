@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm
+from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm,DateForm
 from App.Models.Profile_models import Profile_models
 from django.contrib.auth.models import User
 
@@ -16,6 +16,7 @@ class ProfileController():
             'imageForm': ImageForm(),  # atributos de form y datos de la tabla profile
             'form1': UserForm(),    # el formulario de usuario
             'form2': ProfileForm(),  #  form de perfil con atributo especifico
+            'dateForm': DateForm(),   # form campo fecha de la tabla profile
             'profile': profile,
         }
         return render(request, 'views/profile/profile.html', context)
@@ -36,6 +37,7 @@ class ProfileController():
                    'imageForm':ImageForm(),
                    'form1': UserForm(),  # el formulario de usuario
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
+                   'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
                }
             else:
@@ -43,6 +45,7 @@ class ProfileController():
                    'imageForm':ImageForm(),
                    'form1': UserForm(),   # el formulario de usuario
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
+                   'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
                }
         return render(request, 'views/profile/profile.html',context)
@@ -71,6 +74,7 @@ class ProfileController():
                    'imageForm':ImageForm(),
                    'form1': UserForm(),  # el formulario de usuario
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
+                   'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
                }
                 

@@ -45,3 +45,16 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model   = Profile   #  la tabla profile
         fields  = ['number_phone', 'location']
+        
+        
+class DateForm(forms.ModelForm):
+    birth_date = forms.DateTimeField(label='', 
+        input_formats   = ['%d/%m/%Y'], 
+        widget          = forms.DateTimeInput(attrs = {
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1'
+        }))
+    
+    class Meta:
+        model   = Profile   #  la tabla profile
+        fields  = ['birth_date']
