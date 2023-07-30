@@ -1,5 +1,7 @@
 {% include "views/default/header.html" %}
 
+{% load i18n static %}   <!--- carga todos los recursos estaticos  -->  
+
 <div class="container">
 
     <div class="row">
@@ -9,8 +11,8 @@
             <div class="card">
 
                 <output id="fotoPerfil">
-
-                    <img class="fotoPerfil" src="" />
+                    <!-- metodo profile - ProfilleController --->
+                    <img class="fotoPerfil" src="{{ profile.image.url }}" />
 
                 </output>
 
