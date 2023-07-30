@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from App.Models.Profile_forms import ImageForm,UserForm
+from App.Models.Profile_forms import ImageForm,UserForm,ProfileForm
 from App.Models.Profile_models import Profile_models
 from django.contrib.auth.models import User
 
@@ -15,9 +15,11 @@ class ProfileController():
         context = {
             'imageForm': ImageForm(),  # atributos de form y datos de la tabla profile
             'form1': UserForm(),    # el formulario de usuario
+            'form2': ProfileForm(),  #  form de perfil con atributo especifico
             'profile': profile,
         }
         return render(request, 'views/profile/profile.html', context)
+    
     
     @login_required
     def updateImage(request):
@@ -33,12 +35,14 @@ class ProfileController():
                 context = {
                    'imageForm':ImageForm(),
                    'form1': UserForm(),  # el formulario de usuario
+                   'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'profile': profile,
                }
             else:
                 context = {
                    'imageForm':ImageForm(),
                    'form1': UserForm(),   # el formulario de usuario
+                   'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'profile': profile,
                }
         return render(request, 'views/profile/profile.html',context)
@@ -52,15 +56,21 @@ class ProfileController():
             userid  = request.user.id
             # buscar la id logueado a la DB de usuario
             user    = User.objects.get(id=userid)
+            
+            profile = Profile_models.getProfile(userid)
+            
             # extraer todo las POST, resultado de busqueda desde la DB del usuario logueado
             form1   = UserForm(request.POST, instance=user)
+            form2   = ProfileForm(request.POST, instance=profile)
             
-            if form1.is_valid():
+            if form1.is_valid() and form2.is_valid():
                 form1.save()
+                form2.save()
                 profile = Profile_models.getProfile(userid)
                 context = {
                    'imageForm':ImageForm(),
                    'form1': UserForm(),  # el formulario de usuario
+                   'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'profile': profile,
                }
                 

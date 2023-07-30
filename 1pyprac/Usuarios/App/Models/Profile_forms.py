@@ -30,3 +30,18 @@ class UserForm(forms.ModelForm):
     class Meta:
         model   = User
         fields  = ['first_name', 'last_name', 'username', 'email']
+        
+        
+class ProfileForm(forms.ModelForm):
+    number_phone    = forms.CharField(label='', widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Telefono'
+    }))
+    location        = forms.CharField(label='', widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Direccion'
+    }))
+    
+    class Meta:
+        model   = Profile   #  la tabla profile
+        fields  = ['number_phone', 'location']
