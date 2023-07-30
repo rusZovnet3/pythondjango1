@@ -15,9 +15,7 @@ class Uploadpicture {
 
                 return (e) => {
 
-                    document.getElementById(id).innerHTML = ['<img class="fotoPerfil ' +
-                        id + ' " src="', e.target.result, '" title="', escape(theFile.name), '"/>'
-                    ].join('');
+                    document.getElementById(id).innerHTML = ['<img class="fotoPerfil ' + id + ' " src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
 
                 }
 
