@@ -19,6 +19,7 @@ class ProfileController():
             'form2': ProfileForm(),  #  form de perfil con atributo especifico
             'dateForm': DateForm(),   # form campo fecha de la tabla profile
             'profile': profile,
+            'user': user,
             'password': PasswordForm(),  # form campo password de la tabla User
         }
         return render(request, 'views/profile/profile.html', context)
@@ -29,6 +30,7 @@ class ProfileController():
         if request.method == "POST":  # Sí los datos estan cargado
             userid  = request.user.id  # la id del usuario logueado
             profile = Profile_models.getProfile(userid)
+            user    = User.objects.get(id=userid)  # compara la id con la DB de la tabla User
             form    = ImageForm(request.POST, request.FILES,instance=profile)
             
             if form.is_valid():
@@ -41,6 +43,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'user': user,
                    'password': PasswordForm(),  # form campo password de la tabla User
                }
             else:
@@ -50,6 +53,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'user': user,
                    'password': PasswordForm(),  # form campo password de la tabla User
                }
         return render(request, 'views/profile/profile.html',context)
@@ -82,6 +86,7 @@ class ProfileController():
                    'form2': ProfileForm(),  #  form de perfil con atributo especifico
                    'dateForm': DateForm(),   # form campo fecha de la tabla profile
                    'profile': profile,
+                   'user': user,
                    'password': PasswordForm(),  # form campo password de la tabla User
                }
                 
